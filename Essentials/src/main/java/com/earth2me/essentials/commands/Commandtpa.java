@@ -23,6 +23,7 @@ public class Commandtpa extends EssentialsCommand {
             throw new NotEnoughArgumentsException();
         }
 
+        // NOTE TO SELF: player is the target
         final User player = getPlayer(server, user, args, 0);
         if (user.getName().equalsIgnoreCase(player.getName())) {
             throw new NotEnoughArgumentsException();
@@ -65,8 +66,8 @@ public class Commandtpa extends EssentialsCommand {
             }
             player.requestTeleport(user, false);
             player.sendTl("teleportRequest", user.getDisplayName());
-            player.sendTl("typeTpaccept");
-            player.sendTl("typeTpdeny");
+            player.sendCommandTl("typeTpaccept", "/tpaccept " + user.getName());
+            player.sendCommandTl("typeTpdeny", "/tpdeny " + user.getName());
             if (ess.getSettings().getTpaAcceptCancellation() != 0) {
                 player.sendTl("teleportRequestTimeoutInfo", ess.getSettings().getTpaAcceptCancellation());
             }

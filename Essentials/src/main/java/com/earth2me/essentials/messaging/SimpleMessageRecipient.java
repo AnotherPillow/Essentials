@@ -63,6 +63,11 @@ public class SimpleMessageRecipient implements IMessageRecipient {
     }
 
     @Override
+    public void sendCommandTl(String tlKey, String command, Object... args) {
+        this.parent.sendCommandTl(tlKey, command, args);
+    }
+
+    @Override
     public String tlSender(String tlKey, Object... args) {
         return this.parent.tlSender(tlKey, args);
     }

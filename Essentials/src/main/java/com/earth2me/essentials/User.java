@@ -25,6 +25,7 @@ import net.essentialsx.api.v2.events.TransactionEvent;
 import net.essentialsx.api.v2.services.mail.MailSender;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
+import net.kyori.adventure.text.event.ClickEvent;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -1073,6 +1074,16 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
     public Component tlComponent(String tlKey, Object... args) {
         final String translation = playerTl(tlKey, args);
         return AdventureUtil.miniMessage().deserialize(translation);
+    }
+
+    @Override
+    public void sendCommandTl(String tlKey, String command, Object... args) {
+        final String translation = playerTl(tlKey, args);
+        if (translation.trim().isEmpty()) {
+            return;
+        }
+
+        sendComponent(AdventureUtil.miniMessage().deserialize(translation).clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, command)));
     }
 
     @Override

@@ -27,6 +27,10 @@ public class DiscordMessageRecipient implements IMessageRecipient {
     }
 
     @Override
+    public void sendCommandTl(String tlKey, String command, Object... args) {
+    }
+
+    @Override
     public String tlSender(String tlKey, Object... args) {
         return "";
     }

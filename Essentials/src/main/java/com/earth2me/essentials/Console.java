@@ -80,6 +80,11 @@ public final class Console implements IMessageRecipient {
     }
 
     @Override
+    public void sendCommandTl(String tlKey, String command, Object... args) {
+        this.sendTl(tlKey, args);
+    }
+
+    @Override
     public String tlSender(String tlKey, Object... args) {
         return tlLiteral(tlKey, args);
     }

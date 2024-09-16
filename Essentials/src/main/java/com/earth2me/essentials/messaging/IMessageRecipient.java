@@ -24,6 +24,15 @@ public interface IMessageRecipient extends MailSender {
     void sendTl(String tlKey, Object... args);
 
     /**
+     * Sends a clickable translated message to this recipient.
+     *
+     * @param tlKey key
+     * @param command command to send
+     * @param args  arguments
+     */
+    void sendCommandTl(String tlKey, String command, Object... args);
+
+    /**
      * Translates a message.
      *
      * @param tlKey key
